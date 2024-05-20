@@ -1,4 +1,15 @@
-body {
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+  <title>CGPA Calculator</title>
+  <style>
+    body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
@@ -70,3 +81,173 @@ button:hover {
 p {
   color: blue;
 }
+  </style>
+<script defer data-domain="tomato-leoine-8.tiiny.site" src="https://analytics.tiiny.site/js/plausible.js"></script><script type="text/javascript" src="https://tiiny.host/ad-script.js"></script></head>
+<body>
+
+
+  <div class="container">
+    <h1>Semester Two</h1>
+    <h2>CG Calculator</h2>
+    <hr>
+    <br>    
+    <div class="subject-dropdown">
+      <label for="engineering-drawing"><i class="fas fa-drafting-compass"></i> Engineering Drawing:</label>
+      <select id="engineering-drawing" class="grade-dropdown">
+        <option value="F" selected></option>
+        <option value="A+">A+</option>
+        <option value="A">A</option>
+        <option value="B+">B+</option>
+        <option value="B">B</option>
+        <option value="C+">C+</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="F">F</option>
+      </select>
+    </div>
+
+    <div class="subject-dropdown">
+      <label for="maths"><i class="fas fa-calculator"></i> Maths:</label>
+      <select id="maths" class="grade-dropdown">
+        <option value="F" selected></option>
+        <option value="A+">A+</option>
+        <option value="A">A</option>
+        <option value="B+">B+</option>
+        <option value="B">B</option>
+        <option value="C+">C+</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="F">F</option>
+      </select>
+    </div>
+
+    <div class="subject-dropdown">
+      <label for="chemistry"><i class="fas fa-flask"></i> Chemistry:</label>
+      <select id="chemistry" class="grade-dropdown">
+        <option value="F" selected></option>
+        <option value="A+">A+</option>
+        <option value="A">A</option>
+        <option value="B+">B+</option>
+        <option value="B">B</option>
+        <option value="C+">C+</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="F">F</option>
+      </select>
+    </div>
+
+    <div class="subject-dropdown">
+      <label for="mechatronics"><i class="fas fa-cogs"></i> Mechatronics:</label>
+      <select id="mechatronics" class="grade-dropdown">
+        <option value="F" selected></option>
+        <option value="A+">A+</option>
+        <option value="A">A</option>
+        <option value="B+">B+</option>
+        <option value="B">B</option>
+        <option value="C+">C+</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="F">F</option>
+      </select>
+    </div>
+
+    <div class="subject-dropdown">
+      <label for="human-values"><i class="fas fa-users"></i> Human Values:</label>
+      <select id="human-values" class="grade-dropdown">
+        <option value="F" selected></option>
+        <option value="A+">A+</option>
+        <option value="A">A</option>
+        <option value="B+">B+</option>
+        <option value="B">B</option>
+        <option value="C+">C+</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="F">F</option>
+      </select>
+    </div>
+    
+    <div class="subject-dropdown">
+      <label for="product-design"><i class="fas fa-cube"></i> Product Design:</label>
+      <select id="product-design" class="grade-dropdown">
+        <option value="F" selected></option>
+        <option value="A+">A+</option>
+        <option value="A">A</option>
+        <option value="B+">B+</option>
+        <option value="B">B</option>
+        <option value="C+">C+</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="F">F</option>
+      </select>
+    </div>
+    
+    <div class="subject-dropdown">
+      <label for="iot"><i class="fas fa-wifi"></i> IoT and Drone:</label>
+      <select id="iot" class="grade-dropdown">
+        <option value="F" selected></option>
+        <option value="A+">A+</option>
+        <option value="A">A</option>
+        <option value="B+">B+</option>
+        <option value="B">B</option>
+        <option value="C+">C+</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="F">F</option>
+      </select>
+    </div>
+  
+    
+
+    <hr>
+    <br>
+
+    <button id="calculateBtn"><i class="fas fa-calculator"></i> Calculate CGPA</button>
+
+    <div id="result" class="result-container"></div>
+  </div>
+  <p id="tag"></p>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+  const calculateBtn = document.getElementById("calculateBtn");
+  const resultContainer = document.getElementById("result");
+
+  calculateBtn.addEventListener("click", function () {
+    // Retrieve grades from dropdowns
+    const engineeringDrawingGrade = document.getElementById("engineering-drawing").value;
+    const mathsGrade = document.getElementById("maths").value;
+    const chemistryGrade = document.getElementById("chemistry").value;
+    const mechatronicsGrade = document.getElementById("mechatronics").value;
+    const humanValuesGrade = document.getElementById("human-values").value;
+    const productDesignGrade = document.getElementById("product-design").value;
+    const iotGrade = document.getElementById("iot").value;
+/*     const droneGrade = document.getElementById("drone").value; */
+
+    // Convert grades to numerical values
+    const FourCreditGrades = {'A+': 40, 'A': 36, 'B+': 32, 'B': 28, 'C+': 24, 'C': 20, 'D': 16, 'F': 0};
+    const OneCreditGrades = {'A+': 10, 'A': 9, 'B+': 8, 'B': 7, 'C+': 6, 'C': 5, 'D': 4, 'F': 0};
+    const TwoCreditGrades = {'A+': 20, 'A': 18, 'B+': 16, 'B': 14, 'C+': 12, 'C': 10, 'D': 8, 'F': 0};
+  
+    const engineeringDrawing = FourCreditGrades[engineeringDrawingGrade];
+    const maths = FourCreditGrades[mathsGrade];
+    const chemistry = FourCreditGrades[chemistryGrade];
+    const mechatronics = FourCreditGrades[mechatronicsGrade];
+    const humanValues = OneCreditGrades[humanValuesGrade];
+    const productDesign = TwoCreditGrades[productDesignGrade];
+    const iot = TwoCreditGrades[iotGrade];
+/*     const drone = OneCreditGrades[droneGrade]; */
+
+    // Calculate total and CGPA
+    const total = engineeringDrawing + maths + chemistry + mechatronics + humanValues + productDesign + iot;
+    const cgpa = total / 21; // Assuming each subject has 4 credits
+
+    // Display result
+    resultContainer.innerHTML = `Your predicted CGPA is: ${cgpa.toFixed(2)}`;
+    alert("1. The CG that you are going to see is just a predictive one and is NOT official.\n2. Recheck the options carefully, if NO option is selected, it is considered as 'F'.\n\nGood Luck!")
+  });
+});
+
+  </script>
+
+</body>
+</html>
